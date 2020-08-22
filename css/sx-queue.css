@@ -5,14 +5,6 @@
     margin: 0 auto;
     background-color: skyblue;
 }
-.login {
-    position: absolute;
-    top: 5vw;
-    left: 25vw;
-    width: 25vw;
-    height: 20vw;
-    background-color: aqua;
-}
 .queue {
     position: absolute;
     top: 3vw;
@@ -29,3 +21,55 @@
     height: 26vw;
     background-color: rgba(72, 255, 0, 0.192);
 }
+
+/*敏仪部分开始*/
+.login {
+  position: absolute;
+  top: 5vw;
+  left: 25vw;
+  width: 19vw;
+  height: 20vw;
+  padding: 0.5vx;
+  color: rgba(0,0,0,0.8);
+  background: white;
+  box-shadow: 10px 10px 20px -4px rgba(0,0,0,0.5);
+}
+.login h1 {
+  font-size: 1.5vw;
+  text-align: center;
+  padding-top: 1vw;
+}
+.login_name,
+.login_pwd {
+  margin-top: 2.5vw;
+  position: relative;
+}  
+.login_name input,
+.login_pwd input {
+  border: none;
+  outline: none;
+  width: 16vw;
+  height: 2vw;
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+  margin-left: 1.5vw;
+}
+.login_name label,
+.login_pwd label {
+  position: absolute;
+  top: 0.4vw;
+  left: 1.5vw;
+  z-index: 2;
+  font-size: 1.2vw;
+}
+.login_btn {
+  display: block;
+  margin: 2.5vw auto;
+  width: 5vw;
+  height: 1.8vw;
+  font-size: 1vw;
+  border: none;
+  background: linear-gradient(90deg,rgba(181,154,254),rgba(245,189,253));
+  border-radius: 0.25vw;
+  outline: none;
+}
+/*敏仪部分结束*/
