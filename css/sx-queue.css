@@ -1,0 +1,31 @@
+.sx-container{
+    position: relative;
+    width: 75vw;
+    height: 550px;
+    margin: 0 auto;
+    background-color: skyblue;
+}
+.login {
+    position: absolute;
+    top: 5vw;
+    left: 25vw;
+    width: 25vw;
+    height: 20vw;
+    background-color: aqua;
+}
+.queue {
+    position: absolute;
+    top: 3vw;
+    left: 35vw;
+    width: 23vw;
+    height: 26vw;
+    background-color: rgba(255, 0, 0, 0.596);
+}
+.user {
+    position: absolute;
+    top: 3vw;
+    left: 35vw;
+    width: 23vw;
+    height: 26vw;
+    background-color: rgba(72, 255, 0, 0.192);
+}
