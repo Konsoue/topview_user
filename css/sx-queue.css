@@ -1,19 +1,20 @@
 /* 思贤部分 */
 @media screen and (max-width: 962px) {
+    
     div.welcome {
         font-size: 16px;
     }
 }
 @media screen and (max-width: 765px) {
-    div.sx-container {
+    body div.sx-container {
         position: fixed;
         width: 100%;
         height: 100%;
     }
-    div.nav {
+    .sx-container div.nav {
         display: block;
     }
-    div.queue {
+    .sx-container div.queue {
         position: absolute;
         top: 0;
         left: 0;
@@ -23,16 +24,16 @@
         border-radius: 0%;
         background: aliceblue;
     }
-    div.welcome {
+    .sx-container div.welcome {
         height: 65%;
     }
-    div.logo {
+    .sx-container div.logo {
         height: 20%;
     }
-    div.queue-msg {
+    .sx-container div.queue-msg {
         height: 15%;
     }
-    div.queue-btn {
+    .sx-container div.queue-btn {
         box-sizing: border-box;
         height: 15%;
         padding-top: 7%;
@@ -45,15 +46,6 @@
     height: 550px;
     margin: 0 auto;
     background-color: skyblue;
-}
-.login {
-    display: none;
-    position: absolute;
-    top: 5vw;
-    left: 25vw;
-    width: 25vw;
-    height: 20vw;
-    background-color: aqua;
 }
 .queue {
     position: absolute;
@@ -138,3 +130,55 @@
     background-color: rgb(238, 238, 238);
 }
 /* 思贤部分结束 */
+
+/*敏仪部分开始*/
+.login {
+  position: absolute;
+  top: 5vw;
+  left: 25vw;
+  width: 19vw;
+  height: 20vw;
+  padding: 0.5vx;
+  color: rgba(0,0,0,0.8);
+  background: white;
+  box-shadow: 10px 10px 20px -4px rgba(0,0,0,0.5);
+}
+.login h1 {
+  font-size: 1.5vw;
+  text-align: center;
+  padding-top: 1vw;
+}
+.login_name,
+.login_pwd {
+  margin-top: 2.5vw;
+  position: relative;
+}  
+.login_name input,
+.login_pwd input {
+  border: none;
+  outline: none;
+  width: 16vw;
+  height: 2vw;
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+  margin-left: 1.5vw;
+}
+.login_name label,
+.login_pwd label {
+  position: absolute;
+  top: 0.4vw;
+  left: 1.5vw;
+  z-index: 2;
+  font-size: 1.2vw;
+}
+.login_btn {
+  display: block;
+  margin: 2.5vw auto;
+  width: 5vw;
+  height: 1.8vw;
+  font-size: 1vw;
+  border: none;
+  background: linear-gradient(90deg,rgba(181,154,254),rgba(245,189,253));
+  border-radius: 0.25vw;
+  outline: none;
+}
+/*敏仪部分结束*/
