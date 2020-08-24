@@ -143,9 +143,9 @@
     height: 100%;
   }
   div.login h1 {
+    padding-top: 30vw;
     font-size: 8vw;
     text-align: center;
-    padding-top: 35vw;
   }
   div.login_name,
   div.login_pwd {
