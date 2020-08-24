@@ -47,24 +47,24 @@
   background-color: skyblue;
 }
 .queue {
-  /* display: none; */
+  display: none;
   position: absolute;
-  top: 6vw;
-  left: 46vw;
+  top: 16%;
+  left: 45%;
   width: 25vw;
-  height: 35vw;
+  height: 32vw;
   padding: 1.5vw;
   border-radius: 8px;
   box-sizing: border-box;
   background-color: rgba(255, 0, 0, 0.226);
 }
 .user {
-  display: none;
+  /* display: none; */
   position: absolute;
-  top: 6vw;
-  left: 46vw;
+  top: 16%;
+  left: 45%;
   width: 25vw;
-  height: 35vw;
+  height: 32vw;
   background-color: rgba(128, 128, 128, 0.7);
 }
 /* 手机尺寸的下方导航 */
@@ -131,9 +131,10 @@
 
 /*敏仪部分开始*/
 .login {
+  /* display: none; */
   position: absolute;
-  top: 12vw;
-  left: 28vw;
+  top: 25%;
+  left: 25%;
   width: 25vw;
   height: 20vw;
   padding: 0.5vx;
@@ -215,5 +216,26 @@
   color: #444;
   position: relative;
   right: 1vw;
+}
+/* 用户信息手机版 */
+@media screen and (max-width: 765px) {
+   .sx-container div.user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 93%;
+    padding: 1.5vw 20px ;
+    border-radius: 0%;
+    
+  }
+  .avatar {
+    width: 25vw;
+    height: 25vw;
+  }
+  .info {
+    font-size: 4vw;
+    line-height: 7vw;
+  }
 }
 /* 慧梅 end */
