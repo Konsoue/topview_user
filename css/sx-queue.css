@@ -1,9 +1,8 @@
 /* 思贤部分 */
 @media screen and (max-width: 962px) {
-    
-    div.welcome {
-        font-size: 16px;
-    }
+  div.welcome {
+    font-size: 16px;
+  }
 }
 @media screen and (max-width: 765px) {
     body div.sx-container {
@@ -39,104 +38,185 @@
         padding-top: 7%;
         /* background: red; */
     }
+  body div.sx-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+ }
+  .sx-container div.nav {
+    display: block;
+  }
+  .sx-container div.queue {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 93%;
+    padding: 1.5vw 20px ;
+    border-radius: 0%;
+    background: aliceblue;
+  }
+  .sx-container div.welcome {
+    height: 65%;
+  }
+  .sx-container div.logo {
+    height: 20%;
+  }
+  .sx-container div.queue-msg {
+  height: 15%;
+ }
+  .sx-container div.queue-btn {
+    box-sizing: border-box;
+    height: 15%;
+    padding-top: 7%;
+    /* background: red; */
+  }
 }
 .sx-container{
-    position: relative;
-    width: 75vw;
-    height: 550px;
-    margin: 0 auto;
-    background-color: skyblue;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: skyblue;
 }
 .queue {
-    position: absolute;
-    top: 3vw;
-    left: 35vw;
-    width: 23vw;
-    height: 26vw;
-    padding: 1.5vw;
-    border-radius: 8px;
-    box-sizing: border-box;
-    background-color: rgba(255, 0, 0, 0.226);
+  display: none;
+  position: absolute;
+  top: 16%;
+  left: 45%;
+  width: 25vw;
+  height: 32vw;
+  padding: 1.5vw;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: rgba(255, 0, 0, 0.226);
 }
 .user {
-    display: none;
-    position: absolute;
-    top: 3vw;
-    left: 35vw;
-    width: 23vw;
-    height: 26vw;
-    background-color: rgba(72, 255, 0, 0.192);
+  /* display: none; */
+  position: absolute;
+  top: 16%;
+  left: 45%;
+  width: 25vw;
+  height: 32vw;
+  background-color: rgba(128, 128, 128, 0.7);
 }
 /* 手机尺寸的下方导航 */
 .nav {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 7%;
-    /* background: red; */
+  display: none;
+  position: absolute; 
+  bottom: 0;
+  width: 100%;
+  height: 7%;
+  /* background: red; */
 }
 .nav ul {
-    height: 100%;
-    /* line-height: 10% ; */
-    display: flex;
+  height: 100%;
+  /* line-height: 10% ; */
+  display: flex;
 }
 .nav ul li {
-    /* height: 100%; */
-    padding-top: 4%;
-    flex: 1 0 auto;
-    text-align: center;
+   /* height: 100%; */
+  padding-top: 4%;
+  flex: 1 0 auto;
+  text-align: center;
 }
 .nav ul li:nth-child(1) {
-    border-right: 1px solid rgba(114, 114, 114, 0.568);
+  border-right: 1px solid rgba(114, 114, 114, 0.568);
 }
 /* 排队面试 */
 .welcome {
-    height: 12vw;
-    font-size: 18px;
-    overflow: auto;
-    padding-top: 1vw;
-    /* background-color: red; */
+  height: 12vw;
+  font-size: 18px;
+  overflow: auto;
+  padding-top: 1vw;
+  /* background-color: red; */
 }
 .logo {
-    height: 5vw;
-    text-align: center;
-    /* background: aqua; */
+  height: 4.5vw;
+  text-align: center;
+  /* background: aqua; */
 }
 .logo img {
-    padding-top: 2%;
-    width: 80%;
-    height: 80%;
+  height: 100%;
 }
 .queue-msg {
-    display: none;
-    height: 6vw;
-    /* background-color: skyblue; */
+  display: none;
+  height: 6vw;
+  /* background-color: skyblue; */
 }
 .queue-btn {
-    height: 6vw;
-    padding-top: 20px;
-    box-sizing: border-box;
-    text-align: center;
+  height: 6vw;
+  padding-top: 20px;
+  box-sizing: border-box;
+  text-align: center;
     /* background-color: skyblue; */
 }
 .queue-btn button {
-    padding: 5px 15px;
-    border: 1px solid rgb(49, 49, 49);
-    border-radius: 18px;
-    background-color: #fff;
+  padding: 5px 15px;
+  border: 1px solid rgb(49, 49, 49);
+  border-radius: 18px;
+  background-color: #fff;
 }
 .queue-btn button:hover {
-    background-color: rgb(238, 238, 238);
+  background-color: rgb(238, 238, 238);
 }
 /* 思贤部分结束 */
 
 /*敏仪部分开始*/
+@media screen and (max-width: 765px) {
+  div.login {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+  }
+  div.login h1 {
+    padding-top: 30vw;
+    font-size: 8vw;
+    text-align: center;
+  }
+  div.login_name,
+  div.login_pwd {
+    margin-top: 12vw;
+    position: relative;
+  }  
+  div.login_name input,
+  div.login_pwd input {
+    border: none;
+    outline: none;
+    width: 70vw;
+    height: 8vw;
+    border-bottom: 1px solid rgba(0,0,0,0.8);
+    margin-left: 14vw;
+    font-size: 4vw;
+  }
+  div.login_name label,
+  div.login_pwd label {
+    position: absolute;
+    top: 0%;
+    left: 14vw;
+    z-index: 2;
+    font-size: 4vw;
+  }
+  button.login_btn {
+    display: block;
+    margin: 14vw auto;
+    width: 20vw;
+    height: 8vw;
+    font-size: 4vw;
+    border: none;
+    background: linear-gradient(90deg,rgba(181,154,254),rgba(245,189,253));
+    border-radius: 1vw;
+    outline: none;
+  }
+}
 .login {
   position: absolute;
-  top: 5vw;
-  left: 25vw;
-  width: 19vw;
+  top: 25%;
+  left: 25%;
+  width: 25vw;
   height: 20vw;
   padding: 0.5vx;
   color: rgba(0,0,0,0.8);
@@ -165,10 +245,10 @@
 .login_name label,
 .login_pwd label {
   position: absolute;
-  top: 0.4vw;
+  top: 20%;
   left: 1.5vw;
   z-index: 2;
-  font-size: 1.2vw;
+  font-size: 1.1vw;
 }
 .login_btn {
   display: block;
@@ -182,3 +262,61 @@
   outline: none;
 }
 /*敏仪部分结束*/
+
+/* 慧梅 start */
+.avatar {
+  width: 6vw;
+  height: 6vw;
+  margin: 0 auto;
+  border: 2px solid #333;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.avatar img {
+    width: 100%;
+}
+.user h3 {
+  color: honeydew;
+  text-align: center;
+}
+.info {
+  width: 80%;
+  height: 50%;
+  margin: 1vw auto;
+  text-align: left;
+  font-size: 1.2vw;
+  line-height: 2.5vw;
+}
+.info li {
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+}
+.change-pwd {
+  float: right;
+  color: #444;
+  position: relative;
+  right: 1vw;
+}
+/* 用户信息手机版 */
+@media screen and (max-width: 765px) {
+   .sx-container div.user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 93%;
+    padding: 1.5vw 20px ;
+    border-radius: 0%;
+    
+  }
+  .avatar {
+    width: 25vw;
+    height: 25vw;
+  }
+  .info {
+    font-size: 4vw;
+    line-height: 7vw;
+  }
+}
+/* 慧梅 end */
