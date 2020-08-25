@@ -1,4 +1,6 @@
 $(function () {
+  let baseUrl = 'https://server1.backend.topviewclub.cn';
+
   $('[name=username]').on('focus', function () {
     $(this).siblings().eq(0).css('top', '-80%');
   })
@@ -31,7 +33,11 @@ $(function () {
     let baseUrl = 'https://server1.backend.topviewclub.cn';
     $.ajax({
       url: baseUrl + '/api/login',
+<<<<<<< HEAD
       type: 'post',
+=======
+      type: 'POST',
+>>>>>>> b98961e6192e9da61971ea424004bc7091c23552
       data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
       headers: {
@@ -49,4 +55,6 @@ $(function () {
       }
     })
   }
+
+
 })
