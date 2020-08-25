@@ -15,6 +15,7 @@ $(function () {
       $(this).siblings().eq(0).css('top', '20%');
     }
   })
+
   $('.login_btn').on('click', login);
   function login() {
     const username = $('[name=username]').val();
@@ -27,13 +28,14 @@ $(function () {
       alert('密码不可为空');
       return false;
     }
+    let baseUrl = 'https://server1.backend.topviewclub.cn';
     $.ajax({
-      url: '/api/login',
+      url: baseUrl + '/api/login',
       type: 'post',
       data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
       headers: {
-        'Content-Type': 'aplication/json'
+        'Content-Type': 'application/json'
       },
       success: function (data) {
         console.log(JSON.stringify(data));
