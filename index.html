@@ -17,7 +17,7 @@
     <div class="sx-container">
         <div class="login">
           <h1>用户登录</h1>
-          <form action="" action="/api/login" method="post" autocomplete="off">
+          <form action="/api/login" method="post" autocomplete="off">
             <div class="login_name">
               <label for="name">Username</label>
               <input type="text" name="username">
@@ -35,7 +35,31 @@
             <div class="queue-msg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, aperiam.</div>
             <div class="queue-btn"><button id="queue">开始排号</button></div>
         </div>
-        <div class="user"></div>
+        <div class="user">
+          <h3>个人信息</h3>
+          <div class="avatar">
+            <img src="img/2.jpg" alt="头像标志">
+          </div>
+          <ul class="info">
+            <li>
+              <span>姓名</span>
+              <span>111</span>
+            </li>
+            <li>
+              <span>学号</span>
+              <span>111</span>
+            </li>
+            <li>
+              <span>意向组别</span>
+              <span>111</span>
+            </li>
+            <li>
+              <span>状态</span>
+              <span>111</span>
+            </li>
+          </ul>
+          <span class="change-pwd">修改密码？</span>
+        </div>
         <div class="nav">
           <ul>
             <li>面试排队</li>
@@ -44,6 +68,7 @@
         </div>
     </div>
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="js/sx-queue.js"></script>
     <script src="js/login.js"></script>

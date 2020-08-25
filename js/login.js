@@ -17,7 +17,6 @@ $(function () {
   })
   $('.login_btn').on('click', login);
   function login() {
-    $('.login').fadeOut(100);
     const username = $('[name=username]').val();
     const password = $('[name=password]').val();
     if (username == '') {
@@ -31,11 +30,17 @@ $(function () {
     $.ajax({
       url: '/api/login',
       type: 'post',
-      data: { 'username': username, 'password': password },
+      data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
+      headers: {
+        'Content-Type': 'aplication/json'
+      },
       success: function (data) {
-        console.log(data);
-        $('.login').fadeOut(100);
+        console.log(JSON.stringify(data));
+        if (data.code == 200) {
+          $.cookie("token", data.data.token);
+          $(".login").fadeOut(100);
+        }
       },
       error: function () {
         console.log('请求出错！');
