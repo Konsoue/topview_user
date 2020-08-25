@@ -46,7 +46,9 @@ $(function () {
       success: function (data) {
         console.log(JSON.stringify(data));
         if (data.code == 200) {
-          $.cookie("token", data.data.token);
+          $.cookie("token", data.data.token ,{
+            expires: data.data.expireTime/60/60/24
+          });
           $(".login").fadeOut(100);
         }
       },
