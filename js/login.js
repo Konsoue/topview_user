@@ -30,9 +30,8 @@ $(function () {
       alert('密码不可为空');
       return false;
     }
-    let baseUrl = 'https://server1.backend.topviewclub.cn';
     $.ajax({
-      url: baseUrl + '/api/login',
+      url: '/api/login',
       type: 'POST',
       data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
