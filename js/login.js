@@ -1,4 +1,5 @@
 $(function () {
+<<<<<<< HEAD
 
   /* 
   *@author: 思贤
@@ -120,6 +121,8 @@ $(function () {
   }  
   changePwd();
 
+=======
+>>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
   $('[name=username]').on('focus', function () {
     $(this).siblings().eq(0).css('top', '-80%');
   })
@@ -136,6 +139,18 @@ $(function () {
       $(this).siblings().eq(0).css('top', '20%');
     }
   })
+
+   //显示提示
+   function showTips(tips) {
+    var tipBox = document.querySelector('.tip_box');
+    tipBox.style.display = 'block';
+    tipBox.innerText = tips;
+    var timer = setTimeout(function () {
+      tipBox.style.display = 'none';
+      clearTimeout(timer);
+    }, 1000);
+  }
+
   $('.login_btn').on('click', login);
 
   /* 
@@ -147,15 +162,19 @@ $(function () {
     const username = $('[name=username]').val();
     const password = $('[name=password]').val();
     if (username == '') {
-      alert('用户名不可为空');
+      showTips('用户名不可为空');
       return false;
     }
     if (password == '') {
-      alert('密码不可为空');
+      showTips('密码不可为空');
       return false;
     }
     $.ajax({
+<<<<<<< HEAD
       url:  '/api/login',
+=======
+      url: '/api/login',
+>>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
       type: 'POST',
       data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
@@ -163,6 +182,7 @@ $(function () {
         'Content-Type': 'application/json'
       },
       success: function (data) {
+<<<<<<< HEAD
         // console.log(JSON.stringify(data));
         if (data.code == 200) {
           $.cookie("token", data.data.token);
@@ -171,6 +191,13 @@ $(function () {
           addUserMsg();
           toggleNav();
           changePwd();
+=======
+        if (data.code == 200) {
+          $.cookie("token", data.data.token ,{
+            expires: data.data.expireTime/60/60/24
+          });
+          $(".login").fadeOut(100);
+>>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
         }
       },
       error: function () {
