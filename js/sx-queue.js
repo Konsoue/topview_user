@@ -26,6 +26,7 @@ function getToken() {
 
 /*@author: 思贤
  *@funtion:获取排队信息
+ *@author
 */
 function getQueueMsg() {
   $.ajax({
@@ -37,17 +38,15 @@ function getQueueMsg() {
       'Authorization': getToken()
     },
     success: function (data) {
-      console.log(data);
       if (data.code === 200) {
         // 判断是否是排队时间
+        // console.log("data", data);
         if (data.data.message === 0) {
           $(".queue-msg").text('现在还不是排队时间哟');    
-        }
-        // 判断是否已经排队
-        if (data.data.message === 1) {
+        }else if (data.data.message === 1) {
           $(".queue-msg").text('尚未排队，点击按钮排队哟');
         }else {
-          $(".queue-msg").text('现在你排在' + data.count + '个');
+          $(".queue-msg").text('现在你排在' + data.data.count + '个');
         }
       }
     },
@@ -68,6 +67,7 @@ $('#queue').click(()=>{
       'Authorization': getToken()
     },
     success: function(data) {
+      // console.log(data); 
       $('.queue-msg').text(data.message);
     },
     error: function() {

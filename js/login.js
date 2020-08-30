@@ -1,5 +1,4 @@
 $(function () {
-<<<<<<< HEAD
 
   /* 
   *@author: 思贤
@@ -7,14 +6,11 @@ $(function () {
   *@params
   */
  function styleChange() {
+   $('input[name="username"], input[name="password"]').val("");
    $('.login').fadeOut(1000,'linear');
-   window.onresize = function() {
-     if (document.body.clientWidth > 765) {
-       $('.sx-container').addClass('hasIn');
-     }else {
-       $('.sx-container').removeClass('hasIn');
-     }
-   }
+   if (document.body.clientWidth > 765) {
+     $('.sx-container').addClass('hasIn');
+   } 
  }
   /* 
   *@author：思贤
@@ -42,8 +38,8 @@ $(function () {
   function toggleNav() {
     $('.nav li').eq(1).data('num',0);
     $('.nav li').eq(2).data('num',1);
-    console.log($('.nav li').eq(1));
-    $('.nav li').click(function(){
+    // console.log($('.nav li').eq(1));
+    $('.nav li').off('click').on('click' ,function(){
       console.log($(this).data('num'));
       if ($(this).data('num')) {
         $('.queue').show();
@@ -69,14 +65,13 @@ $(function () {
         'Authorization': getToken()
       },
       success: function(data) {
-        console.log(data);
         if(data.success) {
           $('#name').text(data.data.name);
           $('#stuNum').text(data.data.studentNumber);
           $('#groupName').text(data.data.groupName);
           welcome(data.data.status);
           if(data.data.groupNumber) {
-            $('#groupNumber').text(data.data.groupNumber).css('display',);
+            $('#groupNumber').text(data.data.groupNumber).css('display',"flex");
           }
         }
       },
@@ -91,38 +86,64 @@ $(function () {
   *@params: status是不同阶段对应是数字 0 ~ 5  ; data是欢迎语的数据
   */
   function whichStatus(status, data) {
-    console.log('data',data);
+    // console.log('data',data);
     switch(status) {
-        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status]);break;
-        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status]);break;
-        case 2: $('#status').text('已面试');$('.welcome').text(data[status]);break;
-        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);break;
-        case 4: $('#status').text('考核通过');$('.welcome').text(data[status]);break;
-        default: $('#status').text('考核未通过');$('.welcome').text(data[status]);break;
+        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
+        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
+        case 2: $('#status').text('已面试');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
+        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
+        case 4: $('#status').text('考核通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
+        default: $('#status').text('考核未通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
     }
   }
 
-  /*@author: 
+  /*@author: 思贤
    *@function: 修改密码
    *@params
   */
   function changePwd() {
-    $('.change-pwd').on('click',function() {
-      $('.user-pwd').show();
-      
-    })
-    $('#new-pwd').on('click',function() {
+    $('#new-pwd').off('click').on('click', function() {
       let pwd_data = {
-        oldpassword: $('#oldPassword').val(),
-        newpassword: $('#newPassword').val()
+        oldPassword: $('#oldPassword').val(),
+        newPassword: $('#newPassword').val()
       }
-      
+      console.log(pwd_data);
+      // console.log(pwd_data.newpassword.length);
+      if (pwd_data.oldPassword === "") {
+        showTips('旧密码不能为空');
+        // console.log(111);
+        return;
+      }
+      if (pwd_data.newPassword === "") {
+        showTips('新密码不能为空');
+        return;
+      }
+      if (pwd_data.newPassword.length < 8) {
+        showTips('新密码不能少于8位');
+      }else {
+        $.ajax({
+          url: '/api/student/updateStudentPassword',
+          type: 'POST',
+          data: JSON.stringify(pwd_data),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': getToken()
+          },
+          success: function () {
+            $("#oldPassword,#newPassword").val("");
+            $('.user-pwd').hide();
+            showTips('密码修改成功');
+          },
+          error: function() {
+            console.log("请求失败");
+            showTips("密码修改失败");
+          }
+        })
+      }
     })
   }  
-  changePwd();
+  
 
-=======
->>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
   $('[name=username]').on('focus', function () {
     $(this).siblings().eq(0).css('top', '-80%');
   })
@@ -151,8 +172,35 @@ $(function () {
     }, 1000);
   }
 
-  $('.login_btn').on('click', login);
+ 
 
+  /* 
+   *@author: 思贤
+   *@function: 修改密码的样式显示隐藏和功能调用
+   *@params
+  */
+  function showChaPwd() {
+    $('.change-pwd').off('click').on('click',function() {
+      $('.user-pwd').show();
+      changePwd();
+    })
+    $('.close-btn').off('click').on('click',function() {
+      $('.user-pwd').hide();
+      $("#oldPassword,#newPassword").val("");
+    })
+  }
+  /* 
+   *@author: 思贤
+   *@function: 退出登录
+   *@params
+  */
+  function loginOut() {
+    $('.loginOut').off('click').on('click',function(){
+      $('.sx-container').removeClass('hasIn');
+      $('.login').fadeIn();
+    })
+  }
+  
   /* 
    *@author: 敏仪
    *@function: 登录后，执行的功能
@@ -170,11 +218,7 @@ $(function () {
       return false;
     }
     $.ajax({
-<<<<<<< HEAD
-      url:  '/api/login',
-=======
       url: '/api/login',
->>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
       type: 'POST',
       data: JSON.stringify({ 'username': username, 'password': password }),
       dataType: 'json',
@@ -182,22 +226,16 @@ $(function () {
         'Content-Type': 'application/json'
       },
       success: function (data) {
-<<<<<<< HEAD
-        // console.log(JSON.stringify(data));
-        if (data.code == 200) {
-          $.cookie("token", data.data.token);
-          styleChange();
-          getQueueMsg();
-          addUserMsg();
-          toggleNav();
-          changePwd();
-=======
         if (data.code == 200) {
           $.cookie("token", data.data.token ,{
             expires: data.data.expireTime/60/60/24
           });
-          $(".login").fadeOut(100);
->>>>>>> 6d1c8b4fb5ca958a5c622db1ce4fdf8e805b491b
+          styleChange();
+          getQueueMsg();
+          addUserMsg();
+          toggleNav();
+          showChaPwd();
+          loginOut();
         }
       },
       error: function () {
@@ -206,6 +244,6 @@ $(function () {
     })
   }
 
- 
+  $('.login_btn').off('click').on('click', login);
 })
 

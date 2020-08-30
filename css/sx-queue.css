@@ -19,7 +19,7 @@
     left: 0;
     width: 100%;
     height: 93%;
-    padding: 1.5vw 20px ;
+    padding: 1.5vw 20px;
     border-radius: 0%;
     background: aliceblue;
   }
@@ -58,7 +58,7 @@
   box-sizing: border-box;
   background-color: rgba(255, 0, 0, 0.226);
   z-index: 2;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 .queue {
   /* display: none; */
@@ -194,13 +194,14 @@
 
 /* 用户改密码样式 */
 .user-pwd {
+  display: none;
   position: absolute;
   top: 30%;
   left: 10%;
   width: 80%;
   height: 200px;
   border-radius: 8px;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,1);
   color: white;
 }
 .user-pwd p {
@@ -220,8 +221,43 @@
 .user-pwd button:hover {
   background: rgb(252, 245, 215);
 }
-
-
+.loginOut {
+  position: relative;
+  float: left;
+  left: 2vw;
+  color: #444;
+  cursor: pointer;
+}
+.close-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+.close-btn::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  width: 1px;
+  height: 20px;
+  transform: rotate(45deg);
+  background: #444;
+}
+.close-btn::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  width: 1px;
+  height: 20px;
+  transform: rotate(-45deg);
+  background: #444;
+}
 /* 思贤部分结束 */
 
 /*敏仪部分开始*/
@@ -275,7 +311,7 @@
   }
 }
 .login {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 25%;
   left: 25%;
