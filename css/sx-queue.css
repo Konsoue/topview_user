@@ -426,7 +426,7 @@
     height: 93%;
     padding: 1.5vw 20px ;
     border-radius: 0%;
-    
+    visibility: visible;
   }
   .avatar {
     width: 25vw;
@@ -438,3 +438,21 @@
   }
 }
 /* 慧梅 end */
+
+/* 创境 start  */
+/* 移动分页背景 */
+.nav-active {
+  display: none;
+}
+
+@media screen and (max-width: 765px) {
+  .sx-container div.nav .nav-active {
+    display: block;
+    background-color: red;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: -1;
+  }
+}
+/* 创境 end */
