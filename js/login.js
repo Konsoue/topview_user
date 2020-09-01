@@ -91,7 +91,7 @@ $(function () {
         case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
         case 1: $('#status').text('面试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
         case 2: $('#status').text('已面试');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
+        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
         case 4: $('#status').text('考核通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
         default: $('#status').text('考核未通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
     }
@@ -129,10 +129,15 @@ $(function () {
             'Content-Type': 'application/json',
             'Authorization': getToken()
           },
-          success: function () {
+          success: function (data) {
             $("#oldPassword,#newPassword").val("");
             $('.user-pwd').hide();
-            showTips('密码修改成功');
+            if (data.code === 200) {
+              showTips('密码修改成功');
+            }else {
+              showTips(data.message);
+            }
+            
           },
           error: function() {
             console.log("请求失败");
@@ -236,6 +241,8 @@ $(function () {
           toggleNav();
           showChaPwd();
           loginOut();
+        }else {
+          showTips(data.message);
         }
       },
       error: function () {
