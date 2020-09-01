@@ -31,7 +31,7 @@ $(function () {
   }
 
   /* 
-  *@author:创境的垃圾代码 思贤 
+  *@author:创境 
   *@function: 手机尺寸下，点击nav切换页面
   *@params
   */

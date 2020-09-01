@@ -427,6 +427,7 @@
     padding: 1.5vw 20px ;
     border-radius: 0%;
     visibility: visible;
+    opacity: 0;
   }
   .avatar {
     width: 25vw;
