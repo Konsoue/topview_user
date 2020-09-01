@@ -31,22 +31,40 @@ $(function () {
   }
 
   /* 
-  *@author: 思贤
+  *@author:创境的垃圾代码 思贤 
   *@function: 手机尺寸下，点击nav切换页面
   *@params
   */
   function toggleNav() {
-    $('.nav li').eq(1).data('num',0);
-    $('.nav li').eq(2).data('num',1);
-    // console.log($('.nav li').eq(1));
+    $('.nav li').eq(0).data('num',0);
+    $('.nav li').eq(1).data('num',1);
+    //console.log($('.nav li').eq(1));
     $('.nav li').off('click').on('click' ,function(){
-      console.log($(this).data('num'));
-      if ($(this).data('num')) {
-        $('.queue').show();
-        $('.user').hide();
-      }else {
-        $('.user').show();
-        $('.queue').hide();
+      //console.log($(this).data('num'));
+      if (!$(this).data('num')) {
+        $('.user').stop().animate({
+          left: '100%',
+          opacity: 0,
+        },300);;
+        $('.queue').stop().animate({
+          left:0,
+          opacity: 1,
+        },300);
+        $('.nav-active').stop().animate({
+          left:0,
+        },300);
+      } else {
+        $('.user').stop().animate({
+          left:0,
+          opacity: 1,
+        },300);;
+        $('.queue').stop().animate({
+          left:'-100%',
+          opacity: 0,
+        },300);
+        $('.nav-active').stop().animate({
+          left:'50%',
+        },300);
       }
     })
   }
