@@ -7,17 +7,18 @@ function getToken() {
   let cookie = document.cookie;
   let reg = /;/;
   let arr = cookie.split(reg);
-//   console.log('cookie: ',cookie.replace("%20"," "));
   let which = null;
   arr.every((current,index)=>{
-    if (current.slice(0, 5) === 'token') {
+    // console.log('current=',current);
+    if (current.trim().slice(0, 5) === 'token') {
       which = index;
       return false;
     }
     return true;
   })
-//   console.log(arr[which].replace('%20',' ').substr(6));
-  return arr[which].replace('%20',' ').substr(6);
+  // console.log(arr);
+  // console.log(which);
+  return arr[which].trim().replace('%20',' ').substr(6);
 }
 
 

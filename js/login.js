@@ -8,6 +8,7 @@ $(function () {
  function styleChange() {
    $('input[name="username"], input[name="password"]').val("");
    $('.login').fadeOut(1000,'linear');
+   $('.img').fadeOut(1000);
    if (document.body.clientWidth > 765) {
      $('.sx-container').addClass('hasIn');
    } 
@@ -17,12 +18,12 @@ $(function () {
   *@function：欢迎语的获取数据
   *@params：status是不同阶段对应是数字 0 ~ 5
   */
-  function welcome(status) {
+  function welcome(status, sex) {
     $.ajax({
       url: "js/welcome.json",
       async: true,
       success: (data)=>{
-        whichStatus(status, data);
+        whichStatus(status, data, sex);
       },
       error: ()=> {
         console.log("请求失败");
@@ -87,7 +88,7 @@ $(function () {
           $('#name').text(data.data.name);
           $('#stuNum').text(data.data.studentNumber);
           $('#groupName').text(data.data.groupName);
-          welcome(data.data.status);
+          welcome(data.data.status, data.data.sex);
           if(data.data.groupNumber) {
             $('#groupNumber').text(data.data.groupNumber).css('display',"flex");
           }
@@ -103,15 +104,15 @@ $(function () {
   *@function: 处理不同考核状态的信息
   *@params: status是不同阶段对应是数字 0 ~ 5  ; data是欢迎语的数据
   */
-  function whichStatus(status, data) {
-    // console.log('data',data);
+  function whichStatus(status, data, sex) {
+    let change = sex? "师妹": "师弟";
     switch(status) {
-        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 2: $('#status').text('已面试');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
-        case 4: $('#status').text('考核通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
-        default: $('#status').text('考核未通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
+        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').show();break;
+        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').show();break;
+        case 2: $('#status').text('已面试');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        case 3: $('#status').text('面试通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        case 4: $('#status').text('考核通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        default: $('#status').text('考核未通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
     }
   }
 
@@ -221,6 +222,7 @@ $(function () {
     $('.loginOut').off('click').on('click',function(){
       $('.sx-container').removeClass('hasIn');
       $('.login').fadeIn();
+      $('.img').fadeIn();
     })
   }
   
