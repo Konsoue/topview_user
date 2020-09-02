@@ -254,7 +254,7 @@ $(function () {
             expires: data.data.expireTime/60/60/24
           });
           styleChange();
-          getQueueMsg();
+          getQueueMsg(btnReload);
           addUserMsg();
           toggleNav();
           showChaPwd();
