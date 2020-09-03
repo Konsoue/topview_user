@@ -252,15 +252,19 @@ $(function () {
       },
       success: function (data) {
         if (data.code == 200) {
-          $.cookie("token", data.data.token ,{
-            expires: data.data.expireTime/60/60/24
-          });
-          styleChange();
-          getQueueMsg(btnReload);
-          addUserMsg();
-          toggleNav();
-          showChaPwd();
-          loginOut();
+          if (data.data.roleId == 1) {
+            $.cookie("token", data.data.token ,{
+              expires: data.data.expireTime/60/60/24
+            });
+            styleChange();
+            getQueueMsg(btnReload);
+            addUserMsg();
+            toggleNav();
+            showChaPwd();
+            loginOut();
+          } else {
+            showTips('该用户不存在');
+          }
         }else {
           showTips(data.message);
         }
