@@ -9,20 +9,19 @@ function getToken() {
   let arr = cookie.split(reg);
 //   console.log('cookie: ',cookie.replace("%20"," "));
   let which = null;
-  arr.every((current,index)=>{
+  arr.every(function (current,index){
     if (current.slice(0, 5) === 'token') {
       which = index;
       return false;
     }
     return true;
   })
-//   console.log(arr[which].replace('%20',' ').substr(6));
+  console.log(arr);
+  console.log(which);
+  console.log(arr[which]);
+  console.log(arr[which].replace('%20',' ').substr(6));
   return arr[which].replace('%20',' ').substr(6);
 }
-
-
-
-
 
 /*@author: 思贤
  *@funtion:获取排队信息

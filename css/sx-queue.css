@@ -39,13 +39,17 @@
   }
 }
 
-
+/* 添加背景 huimei start*/
+body {
+  background: url(/img/trees.png);
+}
+/* end */
 .sx-container{
   position: relative;
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  background-color: skyblue;
+
 }
 .user {
   /* display: none; */
@@ -56,7 +60,7 @@
   height: 32vw;
   border-radius: 8px;
   box-sizing: border-box;
-  background-color: rgba(255, 0, 0, 0.226);
+  background-color: gray;
   z-index: 2;
   visibility: hidden;
 }
@@ -69,7 +73,7 @@
   height: 32vw;
   padding: 1.5vw;
   border-radius: 8px;
-  background-color: rgba(255, 0, 0, 0.226);
+  background-color: #ddd;
   z-index: 2;
 }
 /* 手机尺寸的下方导航 */
@@ -269,6 +273,7 @@
     z-index: 10;
     width: 100%;
     height: 100%;
+    background: #91989f;
   }
   div.login h1 {
     padding-top: 30vw;
@@ -286,28 +291,29 @@
     outline: none;
     width: 70vw;
     height: 8vw;
-    border-bottom: 1px solid rgba(0,0,0,0.8);
+    border-bottom: 3px solid rgb(252, 241, 227);
     margin-left: 14vw;
     font-size: 4vw;
+    position: relative;
+    left: 1%;
   }
   div.login_name label,
   div.login_pwd label {
     position: absolute;
     top: 0%;
-    left: 14vw;
+    left: 15%;
     z-index: 2;
     font-size: 4vw;
   }
   button.login_btn {
     display: block;
     margin: 14vw auto;
-    width: 20vw;
+    width: 30vw;
     height: 8vw;
-    font-size: 4vw;
-    border: none;
-    background: linear-gradient(90deg,rgba(181,154,254),rgba(245,189,253));
+    font-size: 3.5vw;
     border-radius: 1vw;
     outline: none;
+    color: rgb(252, 241, 227);
   }
 }
 .login {
@@ -318,10 +324,11 @@
   width: 25vw;
   height: 20vw;
   padding: 0.5vw;
-  color: rgba(0,0,0,0.8);
-  background: white;
-  box-shadow: 10px 10px 20px -4px rgba(0,0,0,0.5);
+  color: rgb(252, 241, 227);
+  background: #91989fe5;
+  box-shadow: 10px 10px 20px -4px rgb(105, 105, 105);
   z-index: 5;
+  border-radius: 10px;
 }
 .login h1 {
   font-size: 1.5vw;
@@ -339,43 +346,101 @@
   outline: none;
   width: 16vw;
   height: 2vw;
-  border-bottom: 1px solid rgba(0,0,0,0.8);
+  font-size: 1.1vw;
+  border-bottom: 3px solid rgb(252, 241, 227);
   margin-left: 1.5vw;
+  background-color: #91989f00;
+  position: relative;
+  left: 10%;
 }
 .login_name label,
 .login_pwd label {
   position: absolute;
   top: 20%;
-  left: 1.5vw;
+  left: 16%;
   z-index: 2;
   font-size: 1.1vw;
+  transition: 0.5s;
 }
+.login_btn:hover {
+  color: #555;
+}
+.tip_box {
+  width: 220px;
+  line-height: 60px;
+  border-radius: 5px;
+  background-color: rgb(32,32,31,0.5);
+  text-align: center;
+  color: rgb(248,248,248);
+  font-size: 17px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 30;
+}
+/*敏仪部分结束*/
+
+/* 按钮引用-huimei start */
 .login_btn {
   display: block;
   margin: 2.5vw auto;
-  width: 5vw;
-  height: 1.8vw;
-  font-size: 1vw;
-  border: none;
-  background: linear-gradient(90deg,rgba(181,154,254),rgba(245,189,253));
-  border-radius: 0.25vw;
+  background: none;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font: inherit;
+  letter-spacing: inherit;
+  padding: 1em 2em;
+  text-transform: inherit;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+  width: 7vw;
+  height: 4.5vh;
   outline: none;
+  color: #444;
+  line-height: 0.5vh;
+  font-size: 0.8vw;
 }
-.tip_box {
-	width: 220px;
-	line-height: 60px;
-	border-radius: 5px;
-	background-color: rgb(32,32,31,0.5);
-	text-align: center;
-	color: rgb(248,248,248);
-	font-size: 17px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	z-index: 30;
+.btn-brave {
+  color: rgb(252, 241, 227);
 }
-/*敏仪部分结束*/
+.btn-brave:hover {
+  -webkit-animation: sawtooth 0.35s infinite linear;
+  animation: sawtooth 0.35s infinite linear;
+  background: -webkit-linear-gradient(45deg, rgb(252, 241, 227) 0.5em, transparent 0.5em) 0 0/1em 1em,
+              -webkit-linear-gradient(135deg, rgb(252, 241, 227) 0.5em, transparent 0.5em) 0 0/1em 1em;
+  background: linear-gradient(45deg, rgb(252, 241, 227) 0.5em, transparent 0.5em) 0 0/1em 1em, 
+              linear-gradient(-45deg, rgb(252, 241, 227) 0.5em, transparent 0.5em) 0 0/1em 1em;
+  color: rgb(252, 241, 227);
+  color: #444;
+}
+
+@-webkit-keyframes sawtooth {
+  100% {
+    background-position: 1em 0;
+  }
+}
+
+@keyframes sawtooth {
+  100% {
+    background-position: 1em 0;
+  }
+}
+/* 
+  Chrome浏览器已有密码自动填充时出现的背景色去除办法
+*/
+input{
+  background-color: rgba(255,255,255,0) !important;
+}
+input:-webkit-autofill{
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+input:-webkit-autofill:focus{
+  -webkit-text-fill-color: #333 !important;
+}
+
+/* 按钮end */
 
 /* 慧梅 start */
 .avatar {
