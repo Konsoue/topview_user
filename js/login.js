@@ -7,7 +7,8 @@ $(function () {
   */
  function styleChange() {
    $('input[name="username"], input[name="password"]').val("");
-   $('.login').fadeOut(1000,'linear');
+   $('.login').fadeOut(600,'linear');
+   $('.img').fadeOut(600);
    if (document.body.clientWidth > 765) {
      $('.sx-container').addClass('hasIn');
    } 
@@ -17,12 +18,12 @@ $(function () {
   *@function：欢迎语的获取数据
   *@params：status是不同阶段对应是数字 0 ~ 5
   */
-  function welcome(status) {
+  function welcome(status, sex) {
     $.ajax({
       url: "js/welcome.json",
       async: true,
       success: (data)=>{
-        whichStatus(status, data);
+        whichStatus(status, data, sex);
       },
       error: ()=> {
         console.log("请求失败");
@@ -31,22 +32,40 @@ $(function () {
   }
 
   /* 
-  *@author: 思贤
+  *@author:创境 
   *@function: 手机尺寸下，点击nav切换页面
   *@params
   */
   function toggleNav() {
-    $('.nav li').eq(1).data('num',0);
-    $('.nav li').eq(2).data('num',1);
-    // console.log($('.nav li').eq(1));
+    $('.nav li').eq(0).data('num',0);
+    $('.nav li').eq(1).data('num',1);
+    //console.log($('.nav li').eq(1));
     $('.nav li').off('click').on('click' ,function(){
-      console.log($(this).data('num'));
-      if ($(this).data('num')) {
-        $('.queue').show();
-        $('.user').hide();
-      }else {
-        $('.user').show();
-        $('.queue').hide();
+      //console.log($(this).data('num'));
+      if (!$(this).data('num')) {
+        $('.user').stop().animate({
+          left: '100%',
+          opacity: 0,
+        },300);;
+        $('.queue').stop().animate({
+          left:0,
+          opacity: 1,
+        },300);
+        $('.nav-active').stop().animate({
+          left:0,
+        },300);
+      } else {
+        $('.user').stop().animate({
+          left:0,
+          opacity: 1,
+        },300);;
+        $('.queue').stop().animate({
+          left:'-100%',
+          opacity: 0,
+        },300);
+        $('.nav-active').stop().animate({
+          left:'50%',
+        },300);
       }
     })
   }
@@ -69,7 +88,7 @@ $(function () {
           $('#name').text(data.data.name);
           $('#stuNum').text(data.data.studentNumber);
           $('#groupName').text(data.data.groupName);
-          welcome(data.data.status);
+          welcome(data.data.status, data.data.sex);
           if(data.data.groupNumber) {
             $('#groupNumber').text(data.data.groupNumber).css('display',"flex");
           }
@@ -85,15 +104,15 @@ $(function () {
   *@function: 处理不同考核状态的信息
   *@params: status是不同阶段对应是数字 0 ~ 5  ; data是欢迎语的数据
   */
-  function whichStatus(status, data) {
-    // console.log('data',data);
+  function whichStatus(status, data, sex) {
+    let change = sex? "师妹": "师弟";
     switch(status) {
-        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 2: $('#status').text('已面试');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 3: $('#status').text('面试通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').show();break;
-        case 4: $('#status').text('考核通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
-        default: $('#status').text('考核未通过');$('.welcome').text(data[status]);$('.queue-msg,.queue-btn').hide();break;
+        case 0: $('#status').text('笔试阶段');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').show();break;
+        case 1: $('#status').text('面试阶段');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').show();break;
+        case 2: $('#status').text('已面试');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        case 3: $('#status').text('面试通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        case 4: $('#status').text('考核通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
+        default: $('#status').text('考核未通过');$('.welcome').text(data[status].replace("师弟/师妹", change));$('.queue-msg,.queue-btn').hide();break;
     }
   }
 
@@ -129,10 +148,15 @@ $(function () {
             'Content-Type': 'application/json',
             'Authorization': getToken()
           },
-          success: function () {
+          success: function (data) {
             $("#oldPassword,#newPassword").val("");
             $('.user-pwd').hide();
-            showTips('密码修改成功');
+            if (data.code === 200) {
+              showTips('密码修改成功');
+            }else {
+              showTips(data.message);
+            }
+            
           },
           error: function() {
             console.log("请求失败");
@@ -197,7 +221,8 @@ $(function () {
   function loginOut() {
     $('.loginOut').off('click').on('click',function(){
       $('.sx-container').removeClass('hasIn');
-      $('.login').fadeIn();
+      $('.login').fadeIn(300);
+      $('.img').fadeIn(300);
     })
   }
   
@@ -227,15 +252,21 @@ $(function () {
       },
       success: function (data) {
         if (data.code == 200) {
-          $.cookie("token", data.data.token ,{
-            expires: data.data.expireTime/60/60/24
-          });
-          styleChange();
-          getQueueMsg();
-          addUserMsg();
-          toggleNav();
-          showChaPwd();
-          loginOut();
+          if (data.data.roleId == 1) {
+            $.cookie("token", data.data.token ,{
+              expires: data.data.expireTime/60/60/24
+            });
+            styleChange();
+            getQueueMsg(btnReload);
+            addUserMsg();
+            toggleNav();
+            showChaPwd();
+            loginOut();
+          } else {
+            showTips('该用户不存在');
+          }
+        }else {
+          showTips(data.message);
         }
       },
       error: function () {

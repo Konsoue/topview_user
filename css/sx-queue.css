@@ -21,10 +21,11 @@
     height: 93%;
     padding: 1.5vw 20px;
     border-radius: 0%;
-    background: aliceblue;
+    background: #91989f;
   }
   .sx-container div.welcome {
     height: 55%;
+    font-size: 5vw;
   }
   .sx-container div.logo {
     height: 15%;
@@ -55,26 +56,40 @@ body {
   /* display: none; */
   position: absolute;
   top: 16%;
-  left: 10%;
+  left: 15%;
   width: 25vw;
   height: 32vw;
   border-radius: 8px;
   box-sizing: border-box;
-  background-color: gray;
+  background-color: #91989fbe;
   z-index: 2;
   visibility: hidden;
+  color: antiquewhite;
 }
 .queue {
   /* display: none; */
   position: absolute;
   top: 16%;
-  left: 45%;
+  left: 48%;
   width: 25vw;
   height: 32vw;
   padding: 1.5vw;
   border-radius: 8px;
-  background-color: #ddd;
+  background-color: #91989fbe;
   z-index: 2;
+}
+.img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.img img {
+  width: 100%;
+  height: 100%
 }
 /* 手机尺寸的下方导航 */
 .nav {
@@ -102,24 +117,26 @@ body {
 /* 排队面试 */
 .welcome {
   height: 12vw;
-  font-size: 18px;
+  font-size: 23px;
   overflow: auto;
   padding-top: 10%;
-  /* background-color: red; */
+  color: aliceblue;
 }
 .logo {
-  height: 4.5vw;
+  height: 5vw;
   padding-top: 15px;
   text-align: center;
-  /* background: aqua; */
 }
 .logo img {
   height: 100%;
 }
 .queue-msg {
-  /* display: none; */
-  height: 6vw;
-  /* background-color: skyblue; */
+  height: 8vw;
+  color: #fff;
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 28px;
 }
 .queue-btn {
   height: 6vw;
@@ -128,54 +145,75 @@ body {
   text-align: center;
     /* background-color: skyblue; */
 }
-.queue-btn button {
-  padding: 5px 15px;
-  border: 1px solid rgb(49, 49, 49);
-  border-radius: 18px;
-  background-color: #fff;
+#queue {
+  background: none;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font-size: 16px;
+  letter-spacing: inherit;
+  margin: 0 auto;
+  padding: 1em 2em;
+  text-transform: inherit;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+  height: 6vh;
+  outline: none;
+  color: #E4F8B1;
+  line-height: 0;
 }
-.queue-btn button:hover {
-  background-color: rgb(238, 238, 238);
+#queue:hover {
+  -webkit-animation: blinds 0.75s linear forwards;
+  animation: blinds 0.75s linear forwards;
+  background: -webkit-linear-gradient(90deg, #E4F8B1 25%, transparent 25%) 0 0/0.5em 0.5em, 
+              -webkit-linear-gradient(90deg, #88d6f3 50%, transparent 50%) 0 0/1em 1em;
+  background: linear-gradient(0deg, #E4F8B1 25%, transparent 25%) 0 0/0.5em 0.5em, 
+              linear-gradient(0deg, #88d6f3 50%, transparent 50%) 0 0/1em 1em;
+  color: #dfb9b3;
+}
+
+@-webkit-keyframes blinds {
+  100% {
+    background-position: 0 0, 0 -3em;
+    background-size: 0 0, 1em 6em;
+  }
+}
+
+@keyframes blinds {
+  100% {
+    background-position: 0 0, 0 -3em;
+    background-size: 0 0, 1em 6em;
+  }
 }
 
 /* 登录成功后的布局变化 */
 .hasIn .queue {
-  transition: all 0.5 linear;
-  left: 10%;
-  animation: move 1s;
+  transition: all 0.3 linear;
+  left: 15%;
+  animation: move 0.8s ease-in-out;
 }
 @keyframes move {
   0% {
     left: 45%;
     z-index: 6;
   }
-  25% {
-    z-index: 6;
-  }
-  45% {
-    z-index: 6;
-  }
-  65% {
-    z-index: 6;
-  }
-  75% {
+  90% {
     z-index: 6;
   }
   100% {
-    left: 10%;
+    left: 15%;
     z-index: 2;
   }
 }
 .hasIn .user {
   visibility: visible;
   transition: all 0.5s linear 1s;
-  left: 45%;
+  left: 55%;
   animation: move_two 1.5s 1s;
 }
 
 @keyframes move_two {
   0% {
-    left: 10%;
+    left: 15%;
     z-index: 6;
   }
   25% {
@@ -191,7 +229,7 @@ body {
     z-index: 6;
   }
   100% {
-    left: 45%;
+    left: 55%;
     z-index: 2;
   }
 }
@@ -205,37 +243,68 @@ body {
   width: 80%;
   height: 200px;
   border-radius: 8px;
-  background: rgba(0,0,0,1);
+  background: #333;
   color: white;
 }
 .user-pwd p {
   text-align: center;
 }
 .user-pwd input {
-  color: black;
+  color: #fff;
   padding-left: 5px;
 }
 .user-pwd button {
-  background: white;
+  background: rgb(206, 205, 205);
   color: black;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 5px 10px;
   border-radius: 5px;
 }
 .user-pwd button:hover {
-  background: rgb(252, 245, 215);
+  background: rgb(255, 255, 255);
 }
 .loginOut {
   position: relative;
   float: left;
-  left: 2vw;
-  color: #444;
+  left: 3vw;
   cursor: pointer;
+  background: none;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font: inherit;
+  letter-spacing: inherit;
+  margin: 1em;
+  padding: 1em 2em;
+  text-transform: inherit;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+  display: block;
+  color: #82f6d8;
+  height: 6vh;
+}
+.loginOut:hover {
+  -webkit-animation: stripes-move 0.75s infinite linear;
+          animation: stripes-move 0.75s infinite linear;
+  background: -webkit-repeating-linear-gradient(45deg, #82f6d8 0, #82f6d8 0.25em, transparent 0.25em, transparent 0.5em);
+  background: repeating-linear-gradient(45deg, #82f6d8 0, #82f6d8 0.25em, transparent 0.25em, transparent 0.5em);
+  color: #f682a0;
+}
+
+@-webkit-keyframes stripes-move {
+  100% {
+    background-position: 5em 0px;
+  }
+}
+
+@keyframes stripes-move {
+  100% {
+    background-position: 5em 0px;
+  }
 }
 .close-btn {
   position: absolute;
   top: -12px;
-  right: -12px;
+  right: -10px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -455,7 +524,7 @@ input:-webkit-autofill:focus{
     width: 100%;
 }
 .user h3 {
-  color: honeydew;
+  color: rgb(234, 240, 234);
   text-align: center;
 }
 .info {
@@ -469,17 +538,51 @@ input:-webkit-autofill:focus{
 .info li {
   display: flex;
   justify-content: space-between;
-  color: #333;
+  color: rgb(239, 243, 239);
 }
 .info .Qgroup {
   display: none;
 }
 .change-pwd {
+  display: block;
   float: right;
-  color: #444;
+  color: gray;
   position: relative;
-  right: 1vw;
+  right: 2vw;
   cursor: pointer;
+  background: none;
+  border: 2px solid;
+  border-bottom-width: 4px;
+  font: inherit;
+  letter-spacing: inherit;
+  margin: 1em;
+  padding: 1em 2em;
+  text-transform: inherit;
+  -webkit-transition: color 1s;
+  transition: color 1s;
+  height: 6vh;
+}
+.change-pwd {
+  color: #9c89f7;
+}
+.change-pwd:hover {
+  -webkit-animation: halftone 1s forwards;
+          animation: halftone 1s forwards;
+  background: -webkit-radial-gradient(circle, #9c89f7 0.2em, rgba(0, 0, 0, 0) 0.25em) 0 0/1.25em 1.25em, -webkit-radial-gradient(circle, #9c89f7 0.2em, rgba(0, 0, 0, 0) 0.25em) 6.25em 6.25em/1.25em 1.25em;
+  background: radial-gradient(circle, #9c89f7 0.2em, rgba(0, 0, 0, 0) 0.25em) 0 0/1.25em 1.25em, radial-gradient(circle, #9c89f7 0.2em, rgba(0, 0, 0, 0) 0.25em) 6.25em 6.25em/1.25em 1.25em;
+  color: #e4f789;
+}
+
+@-webkit-keyframes halftone {
+  100% {
+    background-size: 2.375em 2.375em, 0.1em 0.1em;
+  }
+}
+
+@keyframes halftone {
+  100% {
+    background-size: 2.375em 2.375em, 0.1em 0.1em;
+  }
 }
 /* 用户信息手机版 */
 @media screen and (max-width: 765px) {
@@ -491,7 +594,8 @@ input:-webkit-autofill:focus{
     height: 93%;
     padding: 1.5vw 20px ;
     border-radius: 0%;
-    
+    visibility: visible;
+    opacity: 0;
   }
   .avatar {
     width: 25vw;
@@ -503,3 +607,21 @@ input:-webkit-autofill:focus{
   }
 }
 /* 慧梅 end */
+
+/* 创境 start  */
+/* 移动分页背景 */
+.nav-active {
+  display: none;
+}
+
+@media screen and (max-width: 765px) {
+  .sx-container div.nav .nav-active {
+    display: block;
+    background-color: skyblue;
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    z-index: -1;
+  }
+}
+/* 创境 end */
